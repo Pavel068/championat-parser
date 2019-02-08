@@ -1,6 +1,86 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-  <h1>{{title}}</h1>
-  <p>Welcome to {{title}}</p>
+    <div class="container-fluid header">
+        <div class="row">
+            <div class="col-lg-3">
+                <a href=""><h1>ChampParser</h1></a>
+            </div>
+            <div class="col-lg-4"></div>
+            <div class="col-lg-5 nav">
+                <nav>
+                    <a class="btn" href="">Main</a>
+                    <a class="btn" href="">Teams</a>
+                    <a class="btn" href="">Players</a>
+                    <a class="btn" href="">Goals</a>
+                    <a class="btn" href="">Login</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container main">
+        <div class="row">
+            <div class="col-lg-3 sidebar">
+                <nav class="menu">
+                    <a class="btn" href=""><i class="fas fa-futbol"></i>Football</a>
+                    <a class="btn" href=""><i class="fas fa-basketball-ball"></i>Basketball</a>
+                    <a class="btn" href=""><i class="fas fa-hockey-puck"></i>Hockey</a>
+                    <a class="btn" href=""><i class="fas fa-volleyball-ball"></i>Volleyball</a>
+                    <a class="btn" href=""><i class="fas fa-table-tennis"></i>Tennis</a>
+                </nav>
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-8">
+                <div class="match-list">
+                    <table class="table">
+                        <tr class="thead-dark">
+                            <th>League</th>
+                            <th>Team 1</th>
+                            <th>Team 2</th>
+                            <th>Score 1</th>
+                            <th>Score 2</th>
+                            <th>Date</th>
+                        </tr>
+                        <tr>
+                            <td>RFPL</td>
+                            <td>Zenit Spb</td>
+                            <td>CSCA Moscow</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>2018-05-05</td>
+                        </tr>
+                        <tr>
+                            <td>RFPL</td>
+                            <td>Zenit Spb</td>
+                            <td>CSCA Moscow</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>2018-05-05</td>
+                        </tr>
+                        <tr>
+                            <td>RFPL</td>
+                            <td>Zenit Spb</td>
+                            <td>CSCA Moscow</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>2018-05-05</td>
+                        </tr>
+                        <tr>
+                            <td>RFPL</td>
+                            <td>Zenit Spb</td>
+                            <td>CSCA Moscow</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>2018-05-05</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12"></div>
+        </div>
+    </footer>
 {% endblock %}

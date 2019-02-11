@@ -35,11 +35,26 @@ div.nav {
   }
 }
 
-nav.menu {
+nav.top-menu {
+  .active {
+    border-bottom: 1px solid #212529;
+  }
+}
+
+nav.left-menu {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   flex-wrap: wrap;
+
+  .btn {
+    width: 150px;
+    text-align: left;
+  }
+
+  .active {
+    background-color: #ffa813;
+  }
 }
 
 footer {
@@ -58,4 +73,8 @@ footer {
 
 i {
   margin-right: 2px;
+}
+
+div.main {
+  margin-top: 5px;
 }

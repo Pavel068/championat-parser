@@ -20,7 +20,7 @@
     </div>
     <div class="container main">
         <div class="row">
-            <div class="col-lg-3 sidebar">
+            <div class="col-lg-1 sidebar">
                 <nav class="left-menu">
                     <a class="btn active" href=""><i class="fas fa-futbol"></i>Football</a>
                     <a class="btn" href=""><i class="fas fa-basketball-ball"></i>Basketball</a>
@@ -30,7 +30,7 @@
                 </nav>
             </div>
             <div class="col-lg-1"></div>
-            <div class="col-lg-8">
+            <div class="col-lg-10">
                 <div class="match-list">
                     <table class="table">
                         <tr class="thead-dark">
@@ -41,38 +41,18 @@
                             <th>Score 2</th>
                             <th>Date</th>
                         </tr>
-                        <tr>
-                            <td>RFPL</td>
-                            <td>Zenit Spb</td>
-                            <td>CSCA Moscow</td>
-                            <td>2</td>
-                            <td>1</td>
-                            <td>2018-05-05</td>
-                        </tr>
-                        <tr>
-                            <td>RFPL</td>
-                            <td>Zenit Spb</td>
-                            <td>CSCA Moscow</td>
-                            <td>2</td>
-                            <td>1</td>
-                            <td>2018-05-05</td>
-                        </tr>
-                        <tr>
-                            <td>RFPL</td>
-                            <td>Zenit Spb</td>
-                            <td>CSCA Moscow</td>
-                            <td>2</td>
-                            <td>1</td>
-                            <td>2018-05-05</td>
-                        </tr>
-                        <tr>
-                            <td>RFPL</td>
-                            <td>Zenit Spb</td>
-                            <td>CSCA Moscow</td>
-                            <td>2</td>
-                            <td>1</td>
-                            <td>2018-05-05</td>
-                        </tr>
+                        {% for tournament in tournaments %}
+                            {% for match in tournament.matches %}
+                                <tr>
+                                    <td>{{ match.group.name }}</td>
+                                    <td>{{ match.teams[0].name }}</td>
+                                    <td>{{ match.teams[1].name }}</td>
+                                    <td>{{ match.result.detailed.goal1 }}</td>
+                                    <td>{{ match.result.detailed.goal2 }}</td>
+                                    <td>{{ match.date }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endfor %}
                     </table>
                 </div>
             </div>

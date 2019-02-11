@@ -1,9 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+var Parser = require('../lib/parser');
+
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  let parser = new Parser('football', '2019-02-10');
+  parser.parse()
+      .then((response) => {
+        res.render('index', response);
+      })
+      .catch((error) => {
+        res.render('index', error);
+      });
 });
 
 module.exports = router;

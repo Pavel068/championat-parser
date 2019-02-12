@@ -7,7 +7,7 @@ div.header {
     height: inherit;
     align-items: center;
   }
-  
+
   a {
     color: #000;
   }
@@ -50,10 +50,19 @@ nav.left-menu {
   .btn {
     width: 150px;
     text-align: left;
+    margin-top: 5px;
+  }
+
+  .btn:nth-child(1) {
+    margin-top: 0;
   }
 
   .active {
     background-color: #ffa813;
+  }
+
+  .btn:hover {
+    border-bottom: 1px solid #ffa813;
   }
 }
 
@@ -62,14 +71,23 @@ footer {
   min-height: 50px;
 }
 
-.btn:hover {
-  border-bottom: 1px solid #ffa813;
-}
-
 i {
   margin-right: 2px;
 }
 
 div.main {
   margin-top: 5px;
+}
+
+.btn-more {
+  background-color: #ffa813;
+  color: #000;
+  font-weight: 600;
+  width: 100%;
+  margin: 10px 0 10px 0;
+}
+
+.btn-more:hover {
+  background-color: #212529;
+  color: #fff;
 }

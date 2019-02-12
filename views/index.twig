@@ -22,11 +22,10 @@
         <div class="row">
             <div class="col-lg-1 sidebar">
                 <nav class="left-menu">
-                    <a class="btn active" href=""><i class="fas fa-futbol"></i>Football</a>
-                    <a class="btn" href=""><i class="fas fa-basketball-ball"></i>Basketball</a>
-                    <a class="btn" href=""><i class="fas fa-hockey-puck"></i>Hockey</a>
-                    <a class="btn" href=""><i class="fas fa-volleyball-ball"></i>Volleyball</a>
-                    <a class="btn" href=""><i class="fas fa-table-tennis"></i>Tennis</a>
+                    <a class="btn {%  if label == 'football' or label == false %} active {% endif %}" href="/football"><i class="fas fa-futbol"></i>Football</a>
+                    <a class="btn {% if label == 'basketball' %} active {% endif %}" href="/basketball"><i class="fas fa-basketball-ball"></i>Basketball</a>
+                    <a class="btn {%  if label == 'hockey' %} active {% endif %}" href="/hockey"><i class="fas fa-hockey-puck"></i>Hockey</a>
+                    <a class="btn {% if label == 'volleyball' %} active {% endif %}" href="/volleyball"><i class="fas fa-volleyball-ball"></i>Volleyball</a>
                 </nav>
             </div>
             <div class="col-lg-1"></div>
@@ -54,6 +53,7 @@
                             {% endfor %}
                         {% endfor %}
                     </table>
+                    <a href="/{{ label }}/" class="btn btn-more">Get more</a>
                 </div>
             </div>
         </div>

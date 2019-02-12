@@ -4,7 +4,7 @@
     <div class="container-fluid header">
         <div class="row">
             <div class="col-lg-3">
-                <a href=""><h1>ChampParser</h1></a>
+                <a href="/"><h1>CHAMP-PARSER</h1></a>
             </div>
             <div class="col-lg-4"></div>
             <div class="col-lg-5 nav">
@@ -20,18 +20,21 @@
     </div>
     <div class="container main">
         <div class="row">
-            <div class="col-lg-1 sidebar">
+            <div class="col-lg-2 sidebar">
                 <nav class="left-menu">
-                    <a class="btn {%  if label == 'football' or label == false %} active {% endif %}" href="/football"><i class="fas fa-futbol"></i>Football</a>
-                    <a class="btn {% if label == 'basketball' %} active {% endif %}" href="/basketball"><i class="fas fa-basketball-ball"></i>Basketball</a>
-                    <a class="btn {%  if label == 'hockey' %} active {% endif %}" href="/hockey"><i class="fas fa-hockey-puck"></i>Hockey</a>
-                    <a class="btn {% if label == 'volleyball' %} active {% endif %}" href="/volleyball"><i class="fas fa-volleyball-ball"></i>Volleyball</a>
+                    <a class="btn {% if label == 'football' or label == false %} active {% endif %}" href="/football"><i
+                                class="fas fa-futbol"></i>Football</a>
+                    <a class="btn {% if label == 'basketball' %} active {% endif %}" href="/basketball"><i
+                                class="fas fa-basketball-ball"></i>Basketball</a>
+                    <a class="btn {% if label == 'hockey' %} active {% endif %}" href="/hockey"><i
+                                class="fas fa-hockey-puck"></i>Hockey</a>
+                    <a class="btn {% if label == 'volleyball' %} active {% endif %}" href="/volleyball"><i
+                                class="fas fa-volleyball-ball"></i>Volleyball</a>
                 </nav>
             </div>
-            <div class="col-lg-1"></div>
             <div class="col-lg-10">
                 <div class="match-list">
-                    <table class="table">
+                    <table class="table table-striped">
                         <tr class="thead-dark">
                             <th>League</th>
                             <th>Team 1</th>
@@ -40,20 +43,26 @@
                             <th>Score 2</th>
                             <th>Date</th>
                         </tr>
-                        {% for tournament in tournaments %}
-                            {% for match in tournament.matches %}
-                                <tr>
-                                    <td>{{ match.group.name }}</td>
-                                    <td>{{ match.teams[0].name }}</td>
-                                    <td>{{ match.teams[1].name }}</td>
-                                    <td>{{ match.result.detailed.goal1 }}</td>
-                                    <td>{{ match.result.detailed.goal2 }}</td>
-                                    <td>{{ match.date }}</td>
-                                </tr>
+                        {% if isEmpty == false %}
+                            {% for tournament in tournaments %}
+                                {% for match in tournament.matches %}
+                                    <tr>
+                                        <td>{{ match.group.name }}</td>
+                                        <td>{{ match.teams[0].name }}</td>
+                                        <td>{{ match.teams[1].name }}</td>
+                                        <td>{{ match.result.detailed.goal1 }}</td>
+                                        <td>{{ match.result.detailed.goal2 }}</td>
+                                        <td>{{ match.date }}</td>
+                                    </tr>
+                                {% endfor %}
                             {% endfor %}
-                        {% endfor %}
+                        {% else %}
+                            <tr>
+                                <th>No match found on this day</th>
+                            </tr>
+                        {% endif %}
                     </table>
-                    <a href="/{{ label }}/" class="btn btn-more">Get more</a>
+                    <a href="/{{ label }}/{{ nextDate }}" class="btn btn-more">GET DAY BEFORE</a>
                 </div>
             </div>
         </div>

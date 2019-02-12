@@ -1,12 +1,15 @@
 var express = require('express');
+var dateformat = require('dateformat');
 var router = express.Router();
 
 var Parser = require('../lib/parser');
 
 router.get('/:sport/:date', function (req, res, next) {
+    let nextDate = dateformat(new Date(req.params.date).getTime() - 86400000, 'yyyy-mm-dd');
     let parser = new Parser(req.params.sport, req.params.date);
     parser.parse()
         .then((response) => {
+            response.nextDate = nextDate;
             res.render('index', response);
         })
         .catch((error) => {
@@ -14,10 +17,13 @@ router.get('/:sport/:date', function (req, res, next) {
         });
 });
 
-router.get('/:sport/', function (req, res, next) {
-    let parser = new Parser(req.params.sport, '2019-02-11');
+router.get('/:sport', function (req, res, next) {
+    let nowDate = dateformat(Date.now(), 'yyyy-mm-dd');
+    let nextDate = dateformat(Date.now() - 86400000, 'yyyy-mm-dd');
+    let parser = new Parser(req.params.sport, nowDate);
     parser.parse()
         .then((response) => {
+            response.nextDate = nextDate;
             res.render('index', response);
         })
         .catch((error) => {
@@ -26,9 +32,12 @@ router.get('/:sport/', function (req, res, next) {
 });
 
 router.get('/', function (req, res, next) {
-    let parser = new Parser('football', '2019-02-11');
+    let nowDate = dateformat(Date.now(), 'yyyy-mm-dd');
+    let nextDate = dateformat(Date.now() - 86400000, 'yyyy-mm-dd');
+    let parser = new Parser('football', nowDate);
     parser.parse()
         .then((response) => {
+            response.nextDate = nextDate;
             res.render('index', response);
         })
         .catch((error) => {

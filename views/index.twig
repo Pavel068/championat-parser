@@ -1,34 +1,17 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-    <div class="container-fluid header">
-        <div class="row">
-            <div class="col-lg-3">
-                <a href="/"><h1>CHAMP-PARSER</h1></a>
-            </div>
-            <div class="col-lg-4"></div>
-            <div class="col-lg-5 nav">
-                <nav class="top-menu">
-                    <a class="btn active" href="">Main</a>
-                    <a class="btn" href="">Teams</a>
-                    <a class="btn" href="">Players</a>
-                    <a class="btn" href="">Statistic</a>
-                    <a class="btn" href="">Login</a>
-                </nav>
-            </div>
-        </div>
-    </div>
     <div class="container main">
         <div class="row">
             <div class="col-lg-2 sidebar">
                 <nav class="left-menu">
-                    <a class="btn {% if label == 'football' or label == false %} active {% endif %}" href="/football"><i
+                    <a class="btn {% if label == 'football' or label == false %} active {% endif %}" href="/live/football"><i
                                 class="fas fa-futbol"></i>Football</a>
-                    <a class="btn {% if label == 'basketball' %} active {% endif %}" href="/basketball"><i
+                    <a class="btn {% if label == 'basketball' %} active {% endif %}" href="/live/basketball"><i
                                 class="fas fa-basketball-ball"></i>Basketball</a>
-                    <a class="btn {% if label == 'hockey' %} active {% endif %}" href="/hockey"><i
+                    <a class="btn {% if label == 'hockey' %} active {% endif %}" href="/live/hockey"><i
                                 class="fas fa-hockey-puck"></i>Hockey</a>
-                    <a class="btn {% if label == 'volleyball' %} active {% endif %}" href="/volleyball"><i
+                    <a class="btn {% if label == 'volleyball' %} active {% endif %}" href="/live/volleyball"><i
                                 class="fas fa-volleyball-ball"></i>Volleyball</a>
                 </nav>
             </div>
@@ -83,9 +66,4 @@
             </div>
         </div>
     </div>
-    <footer class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12"></div>
-        </div>
-    </footer>
 {% endblock %}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ title }}</title>
+    <title>SportParser - Information analytical system</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -11,6 +11,28 @@
     <link rel='stylesheet' href='/stylesheets/style.css'/>
 </head>
 <body>
+<div class="container-fluid header">
+    <div class="row">
+        <div class="col-lg-3">
+            <a href="/"><h1>SportParser</h1></a>
+        </div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-5 nav">
+            <nav class="top-menu">
+                <a class="btn active" href="/">Main</a>
+                <a class="btn" href="/teams">Teams</a>
+                <a class="btn" href="/players">Players</a>
+                <a class="btn" href="/stat">Statistic</a>
+                <a class="btn" href="/login">Login</a>
+            </nav>
+        </div>
+    </div>
+</div>
 {% block body %}{% endblock %}
+<footer class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12"></div>
+    </div>
+</footer>
 </body>
 </html>

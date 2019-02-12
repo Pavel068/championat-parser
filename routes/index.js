@@ -4,7 +4,11 @@ var router = express.Router();
 
 var Parser = require('../lib/parser');
 
-router.get('/:sport/:date', function (req, res, next) {
+router.get('/login', function (req, res, next) {
+    res.render('login', {});
+});
+
+router.get('/live/:sport/:date', function (req, res, next) {
     let nextDate = dateformat(new Date(req.params.date).getTime() - 86400000, 'yyyy-mm-dd');
     let parser = new Parser(req.params.sport, req.params.date);
     parser.parse()
@@ -17,7 +21,7 @@ router.get('/:sport/:date', function (req, res, next) {
         });
 });
 
-router.get('/:sport', function (req, res, next) {
+router.get('/live/:sport', function (req, res, next) {
     let nowDate = dateformat(Date.now(), 'yyyy-mm-dd');
     let nextDate = dateformat(Date.now() - 86400000, 'yyyy-mm-dd');
     let parser = new Parser(req.params.sport, nowDate);

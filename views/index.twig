@@ -12,7 +12,7 @@
                     <a class="btn active" href="">Main</a>
                     <a class="btn" href="">Teams</a>
                     <a class="btn" href="">Players</a>
-                    <a class="btn" href="">Goals</a>
+                    <a class="btn" href="">Statistic</a>
                     <a class="btn" href="">Login</a>
                 </nav>
             </div>
@@ -37,22 +37,38 @@
                     <table class="table table-striped">
                         <tr class="thead-dark">
                             <th>League</th>
-                            <th>Team 1</th>
-                            <th>Team 2</th>
-                            <th>Score 1</th>
-                            <th>Score 2</th>
+                            <th>Teams</th>
+                            <th>Result</th>
                             <th>Date</th>
                         </tr>
                         {% if isEmpty == false %}
                             {% for tournament in tournaments %}
                                 {% for match in tournament.matches %}
                                     <tr>
-                                        <td>{{ match.group.name }}</td>
-                                        <td>{{ match.teams[0].name }}</td>
-                                        <td>{{ match.teams[1].name }}</td>
-                                        <td>{{ match.result.detailed.goal1 }}</td>
-                                        <td>{{ match.result.detailed.goal2 }}</td>
-                                        <td>{{ match.date }}</td>
+                                        <td>
+                                            <img src="{{ tournament.img }}" alt="">
+                                            {% if tournament.name_tournament != null %}
+                                                <span>{{ tournament.name_tournament }}</span>
+                                            {% else %}
+                                                <span>{{ tournament.name }}</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <img src="{{ match.teams[0].icon }}" alt="">
+                                            <span>{{ match.teams[0].name }} </span>
+                                            <b>vs</b>
+                                            <img src="{{ match.teams[1].icon }}" alt="">
+                                            <span>{{ match.teams[1].name }}</span>
+                                        </td>
+                                        <td>
+                                            {% if match.result.detailed.goal1 == null %}
+                                                <span>Не начался</span>
+                                            {% else %}
+                                                <span>{{ match.result.detailed.goal1 }} - {{ match.result.detailed.goal2 }}</span>
+                                            {% endif %}
+
+                                        </td>
+                                        <td>{{ match.time_str }}</td>
                                     </tr>
                                 {% endfor %}
                             {% endfor %}

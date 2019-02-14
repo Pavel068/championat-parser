@@ -1,69 +1,65 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-    <div class="container main">
-        <div class="row">
-            <div class="col-lg-2 sidebar">
-                <nav class="left-menu">
-                    <a class="btn {% if label == 'football' or label == false %} active {% endif %}" href="/live/football"><i
-                                class="fas fa-futbol"></i>Football</a>
-                    <a class="btn {% if label == 'basketball' %} active {% endif %}" href="/live/basketball"><i
-                                class="fas fa-basketball-ball"></i>Basketball</a>
-                    <a class="btn {% if label == 'hockey' %} active {% endif %}" href="/live/hockey"><i
-                                class="fas fa-hockey-puck"></i>Hockey</a>
-                    <a class="btn {% if label == 'volleyball' %} active {% endif %}" href="/live/volleyball"><i
-                                class="fas fa-volleyball-ball"></i>Volleyball</a>
-                </nav>
-            </div>
-            <div class="col-lg-10">
-                <div class="match-list">
-                    <table class="table table-striped">
-                        <tr class="thead-dark">
-                            <th>League</th>
-                            <th>Teams</th>
-                            <th>Result</th>
-                            <th>Date</th>
-                        </tr>
-                        {% if isEmpty == false %}
-                            {% for tournament in tournaments %}
-                                {% for match in tournament.matches %}
-                                    <tr>
-                                        <td>
-                                            <img src="{{ tournament.img }}" alt="">
-                                            {% if tournament.name_tournament != null %}
-                                                <span>{{ tournament.name_tournament }}</span>
-                                            {% else %}
-                                                <span>{{ tournament.name }}</span>
-                                            {% endif %}
-                                        </td>
-                                        <td>
-                                            <img src="{{ match.teams[0].icon }}" alt="">
-                                            <span>{{ match.teams[0].name }} </span>
-                                            <b>vs</b>
-                                            <img src="{{ match.teams[1].icon }}" alt="">
-                                            <span>{{ match.teams[1].name }}</span>
-                                        </td>
-                                        <td>
-                                            {% if match.result.detailed.goal1 == null %}
-                                                <span>Не начался</span>
-                                            {% else %}
-                                                <span>{{ match.result.detailed.goal1 }} - {{ match.result.detailed.goal2 }}</span>
-                                            {% endif %}
-
-                                        </td>
-                                        <td>{{ match.time_str }}</td>
-                                    </tr>
-                                {% endfor %}
-                            {% endfor %}
-                        {% else %}
+    <div class="col-lg-2 sidebar">
+        <nav class="left-menu">
+            <a class="btn {% if label == 'football' or label == false %} active {% endif %}" href="/live/football"><i
+                        class="fas fa-futbol"></i>Football</a>
+            <a class="btn {% if label == 'basketball' %} active {% endif %}" href="/live/basketball"><i
+                        class="fas fa-basketball-ball"></i>Basketball</a>
+            <a class="btn {% if label == 'hockey' %} active {% endif %}" href="/live/hockey"><i
+                        class="fas fa-hockey-puck"></i>Hockey</a>
+            <a class="btn {% if label == 'volleyball' %} active {% endif %}" href="/live/volleyball"><i
+                        class="fas fa-volleyball-ball"></i>Volleyball</a>
+        </nav>
+    </div>
+    <div class="col-lg-10">
+        <div class="match-list">
+            <table class="table table-striped">
+                <tr class="thead-dark">
+                    <th>League</th>
+                    <th>Teams</th>
+                    <th>Result</th>
+                    <th>Date</th>
+                </tr>
+                {% if isEmpty == false %}
+                    {% for tournament in tournaments %}
+                        {% for match in tournament.matches %}
                             <tr>
-                                <th>No match found on this day</th>
+                                <td>
+                                    <img src="{{ tournament.img }}" alt="">
+                                    {% if tournament.name_tournament != null %}
+                                        <span>{{ tournament.name_tournament }}</span>
+                                    {% else %}
+                                        <span>{{ tournament.name }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <img src="{{ match.teams[0].icon }}" alt="">
+                                    <span>{{ match.teams[0].name }} </span>
+                                    <b>vs</b>
+                                    <img src="{{ match.teams[1].icon }}" alt="">
+                                    <span>{{ match.teams[1].name }}</span>
+                                </td>
+                                <td>
+                                    {% if match.result.detailed.goal1 == null %}
+                                        <span>Не начался</span>
+                                    {% else %}
+                                        <span>{{ match.result.detailed.goal1 }} - {{ match.result.detailed.goal2 }}</span>
+                                    {% endif %}
+
+                                </td>
+                                <td>{{ match.time_str }}</td>
                             </tr>
-                        {% endif %}
-                    </table>
-                    <a href="/live/{{ label }}/{{ nextDate }}" class="btn btn-more">GET DAY BEFORE</a>
-                </div>
-            </div>
+                        {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <th>No match found on this day</th>
+                    </tr>
+                {% endif %}
+            </table>
+            <a href="/live/{{ label }}/{{ nextDate }}" class="btn btn-more">GET DAY BEFORE</a>
         </div>
     </div>
 {% endblock %}

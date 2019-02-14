@@ -19,11 +19,11 @@
         <div class="col-lg-4"></div>
         <div class="col-lg-5 nav">
             <nav class="top-menu">
-                <a class="btn active" href="/">Main</a>
-                <a class="btn" href="/teams">Teams</a>
-                <a class="btn" href="/players">Players</a>
-                <a class="btn" href="/stat">Statistic</a>
-                <a class="btn" href="/login">Login</a>
+                <a class="btn {% if section == 'main' %} active {% endif %}" href="/">Main</a>
+                <a class="btn {% if section == 'teams' %} active {% endif %}" href="/teams">Teams</a>
+                <a class="btn {% if section == 'players' %} active {% endif %}" href="/players">Players</a>
+                <a class="btn {% if section == 'stat' %} active {% endif %}" href="/stat">Statistic</a>
+                <a class="btn {% if section == 'login' %} active {% endif %}" href="/login">Login</a>
             </nav>
         </div>
     </div>

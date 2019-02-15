@@ -17,10 +17,7 @@ for (let time = startTime; time <= endTime; time += 86400000) {
             for (let tournament in response.tournaments) {
                 response.tournaments[tournament].matches.forEach((match) => {
                     match.teams.forEach((team) => {
-                        db.addTeam('football', {
-                            name: team.name,
-                            icon_link: team.icon
-                        });
+                        db.addMatch('football', response.tournaments[tournament], match);
                     });
                 });
             }

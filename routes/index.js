@@ -10,8 +10,8 @@ Routes for live results (no auth)
 
 router.get('/live/:sport/:date', function (req, res, next) {
     let nextDate = dateformat(new Date(req.params.date).getTime() - 86400000, 'yyyy-mm-dd');
-    let parser = new Parser(req.params.sport, req.params.date);
-    parser.parse()
+    let parser = new Parser();
+    parser.parse(req.params.sport, req.params.date)
         .then((response) => {
             response.nextDate = nextDate;
             response.section = 'main';
@@ -25,8 +25,8 @@ router.get('/live/:sport/:date', function (req, res, next) {
 router.get('/live/:sport', function (req, res, next) {
     let nowDate = dateformat(Date.now(), 'yyyy-mm-dd');
     let nextDate = dateformat(Date.now() - 86400000, 'yyyy-mm-dd');
-    let parser = new Parser(req.params.sport, nowDate);
-    parser.parse()
+    let parser = new Parser();
+    parser.parse(req.params.sport, nowDate)
         .then((response) => {
             response.nextDate = nextDate;
             response.section = 'main';
@@ -40,8 +40,8 @@ router.get('/live/:sport', function (req, res, next) {
 router.get('/', function (req, res, next) {
     let nowDate = dateformat(Date.now(), 'yyyy-mm-dd');
     let nextDate = dateformat(Date.now() - 86400000, 'yyyy-mm-dd');
-    let parser = new Parser('football', nowDate);
-    parser.parse()
+    let parser = new Parser();
+    parser.parse('football', nowDate)
         .then((response) => {
             response.nextDate = nextDate;
             response.section = 'main';

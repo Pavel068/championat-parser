@@ -9,6 +9,9 @@
             <label for="password"><i class="fas fa-key"></i>Password:</label>
             <input class="form-control" type="password" name="password" id="password">
             <button class="btn btn-more">LOGIN</button>
+            {% if error == 1 %}
+                <p class="text-danger">Bad username or password</p>
+            {% endif %}
         </form>
     </div>
     <div class="col-lg-3"></div>

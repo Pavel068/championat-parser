@@ -20,10 +20,13 @@
         <div class="col-lg-5 nav">
             <nav class="top-menu">
                 <a class="btn {% if section == 'main' %} active {% endif %}" href="/">Main</a>
-                <a class="btn {% if section == 'teams' %} active {% endif %}" href="/teams">Teams</a>
-                <a class="btn {% if section == 'players' %} active {% endif %}" href="/players">Players</a>
-                <a class="btn {% if section == 'stat' %} active {% endif %}" href="/stat">Statistic</a>
-                <a class="btn {% if section == 'login' %} active {% endif %}" href="/login">Login</a>
+                {% if user.userId > 0 %}
+                    <a class="btn {% if section == 'teams' %} active {% endif %}" href="/teams">Teams</a>
+                    <a class="btn {% if section == 'stat' %} active {% endif %}" href="/stat">Statistic</a>
+                    <a class="btn {% if section == 'login' %} active {% endif %}" href="/logout">Logout</a>
+                {% else %}
+                    <a class="btn {% if section == 'login' %} active {% endif %}" href="/login">Login</a>
+                {% endif %}
             </nav>
         </div>
     </div>

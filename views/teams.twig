@@ -2,6 +2,15 @@
 
 {% block body %}
     <div class="col-lg-12">
-        <p class="lead">This page is under construction</p>
+        <div class="teams">
+            {% for team in teams %}
+                <div>
+                    <p class="lead">{{ team.l }}</p>
+                    {% for teamName in team.teams %}
+                        <a href="/teams/{{ teamName }}">{{ teamName }}</a>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

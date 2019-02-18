@@ -96,10 +96,18 @@ Routes for required auth pages
  */
 
 router.get('/teams', function (req, res, next) {
-    res.render('teams', {
-        section: 'teams',
-        user: req.cookies,
-    });
+    let db = new DB();
+    db.getTeams('football')
+        .then((response) => {
+            res.render('teams', {
+                section: 'teams',
+                user: req.cookies,
+                teams: response
+            });
+        })
+        .catch((error) => {
+
+        });
 });
 
 router.get('/teams/:team', function (req, res, next) {

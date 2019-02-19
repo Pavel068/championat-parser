@@ -95,14 +95,24 @@ router.get('/logout', function (req, res, next) {
 Routes for required auth pages
  */
 
-router.get('/teams', function (req, res, next) {
+router.get('/teams/:sport/:team', function (req, res, next) {
+    res.render('team', {
+        section: 'teams',
+        user: req.cookies,
+        label: req.params.sport,
+        teamName: req.params.team,
+    });
+});
+
+router.get('/teams/:sport', function (req, res, next) {
     let db = new DB();
-    db.getTeams('football')
+    db.getTeams(req.params.sport)
         .then((response) => {
             res.render('teams', {
                 section: 'teams',
                 user: req.cookies,
-                teams: response
+                teams: response,
+                label: req.params.sport,
             });
         })
         .catch((error) => {
@@ -110,11 +120,20 @@ router.get('/teams', function (req, res, next) {
         });
 });
 
-router.get('/teams/:team', function (req, res, next) {
-    res.render('team', {
-        section: 'teams',
-        user: req.cookies,
-    });
+router.get('/teams', function (req, res, next) {
+    let db = new DB();
+    db.getTeams('football')
+        .then((response) => {
+            res.render('teams', {
+                section: 'teams',
+                user: req.cookies,
+                teams: response,
+                label: 'football'
+            });
+        })
+        .catch((error) => {
+
+        });
 });
 
 router.get('/stat', function (req, res, next) {

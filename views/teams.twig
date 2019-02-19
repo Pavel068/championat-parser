@@ -19,7 +19,7 @@
                 <div>
                     <p class="lead">{{ team.l }}</p>
                     {% for teamName in team.teams %}
-                        <a href="/teams/{{ teamName }}">{{ teamName }}</a>
+                        <a href="/teams/{{ label }}/{{ teamName }}">{{ teamName }}</a>
                     {% endfor %}
                 </div>
             {% endfor %}

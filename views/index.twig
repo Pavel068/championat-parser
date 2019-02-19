@@ -35,11 +35,15 @@
                                     {% endif %}
                                 </td>
                                 <td>
-                                    <img src="{{ match.teams[0].icon }}" alt="">
-                                    <span>{{ match.teams[0].name }} </span>
+                                    <a href="/teams/{{ label }}/{{  match.teams[0].name }}">
+                                        <img src="{{ match.teams[0].icon }}" alt="">
+                                        <span>{{ match.teams[0].name }} </span>
+                                    </a>
                                     <b>vs</b>
-                                    <img src="{{ match.teams[1].icon }}" alt="">
-                                    <span>{{ match.teams[1].name }}</span>
+                                    <a href="/teams/{{ label }}/{{  match.teams[1].name }}">
+                                        <img src="{{ match.teams[1].icon }}" alt="">
+                                        <span>{{ match.teams[1].name }}</span>
+                                    </a>
                                 </td>
                                 <td>
                                     {% if match.result.detailed.goal1 == null %}

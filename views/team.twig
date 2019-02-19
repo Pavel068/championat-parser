@@ -2,6 +2,24 @@
 
 {% block body %}
     <div class="col-lg-12">
-        <p class="lead"></p>
+        <p class="lead">{{ teamName }}</p>
+        <table class="table table-striped">
+            <tr class="thead-dark">
+                <th>Date</th>
+                <th>Tournament</th>
+                <th>Home</th>
+                <th>Guest</th>
+                <th>Result</th>
+            </tr>
+            {% for result in results %}
+            <tr>
+                <td>{{ result.start_time }}</td>
+                <td>{{ result.tournament_name }} ({{ result.tournament_stage }})</td>
+                <td>{{ result.team_1 }}</td>
+                <td>{{ result.team_2 }}</td>
+                <td>{{ result.score_1 }} - {{ result.score_2 }}</td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
 {% endblock %}

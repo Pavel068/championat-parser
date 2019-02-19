@@ -1,7 +1,46 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-    <div class="col-lg-12">
-        <p class="lead">This page is under construction</p>
+    <div class="col-lg-2 sidebar">
+        <nav class="left-menu">
+            <a class="btn {% if label == 'football' or label == false %} active {% endif %}" href="/stat/football"><i
+                        class="fas fa-futbol"></i>Football</a>
+            <a class="btn {% if label == 'basketball' %} active {% endif %}" href="/stat/basketball"><i
+                        class="fas fa-basketball-ball"></i>Basketball</a>
+            <a class="btn {% if label == 'hockey' %} active {% endif %}" href="/stat/hockey"><i
+                        class="fas fa-hockey-puck"></i>Hockey</a>
+            <a class="btn {% if label == 'volleyball' %} active {% endif %}" href="/stat/volleyball"><i
+                        class="fas fa-volleyball-ball"></i>Volleyball</a>
+        </nav>
+    </div>
+    <div class="col-lg-5">
+        <p class="lead">Top 10 home teams (30 days)</p>
+        <table class="table table-striped">
+            <tr class="thead-dark">
+                <th>Team</th>
+                <th>Count</th>
+            </tr>
+            {% for homeTeam in stat %}
+            <tr>
+                <td>{{ homeTeam.team_1 }}</td>
+                <td>{{ homeTeam.homeWins }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="col-lg-5">
+        <p class="lead">Top 10 guest teams (30 days)</p>
+        <table class="table table-striped">
+            <tr class="thead-dark">
+                <th>Team</th>
+                <th>Count</th>
+            </tr>
+            {% for homeTeam in stat %}
+                <tr>
+                    <td>{{ homeTeam.team_1 }}</td>
+                    <td>{{ homeTeam.homeWins }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 {% endblock %}

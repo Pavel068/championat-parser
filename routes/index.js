@@ -144,11 +144,36 @@ router.get('/teams', function (req, res, next) {
         });
 });
 
+router.get('/stat/:sport', function (req, res, next) {
+    let db = new DB();
+    db.getMainStat(req.params.sport)
+        .then((response) => {
+            res.render('stat', {
+                section: 'stat',
+                stat: response,
+                label: req.params.sport,
+                user: req.cookies,
+            });
+        })
+        .catch((error) => {
+
+        });
+});
+
 router.get('/stat', function (req, res, next) {
-    res.render('stat', {
-        section: 'stat',
-        user: req.cookies,
-    });
+    let db = new DB();
+    db.getMainStat('football')
+        .then((response) => {
+            res.render('stat', {
+                section: 'stat',
+                stat: response,
+                label: 'football',
+                user: req.cookies,
+            });
+        })
+        .catch((error) => {
+
+        });
 });
 
 module.exports = router;
